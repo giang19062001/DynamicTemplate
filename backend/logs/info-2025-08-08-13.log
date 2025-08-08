@@ -1,0 +1,11 @@
+2025-08-08 13:19:10 info: categoryModel.getCategoryList: : query(
+      SELECT template_json->'layouts' AS layouts  FROM  sc_template.tbl_template_info LIMIT 1
+    ) => params([])
+2025-08-08 13:19:10 info: productModel.getProductList: limit(0), offset(10), : query(
+       SELECT product_code, product_name, product_image, product_price 
+       FROM sc_product.tbl_product_info
+       OFFSET $1 LIMIT $2;
+    ) => params([0,10])
+2025-08-08 13:19:10 info: categoryModel.getCategoryList: : query(
+      SELECT category_code, category_name FROM  sc_category.tbl_category_info
+    ) => params([])

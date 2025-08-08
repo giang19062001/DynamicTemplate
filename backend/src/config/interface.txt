@@ -1,0 +1,59 @@
+-- product
+export interface IProduct {
+   productCode: string;
+   productName: string;
+   productImage: string;
+   productPrice: string;
+}
+-- cate
+export interface ICate {
+   categoryCode: string;
+   categoryName: string;
+}
+
+-- filters
+export interface IFilters {
+   filterName: string;
+   filterCode: string;
+}
+
+-- template
+export interface ITemplate {
+   type: string;
+   style: object | null;
+   childrean: object[];
+}
+
+-- response của getProductListLayout API
+export interface IProductListLayout {
+   layouts: ITemplate;
+   data: {
+      filters: IFilters[];
+      categories: ICate[];
+      productTotal: number;
+      productList: IProduct[];
+   };
+}
+
+
+-- response 
+export interface IError {
+   message: string;
+   code: number;
+}
+
+export interface IApiSuccessResponse<T = any> {
+   success: true;
+   statusCode: number;
+   message: string;
+   data: T | null;
+   error: null;
+}
+
+export interface IApiErrorResponse {
+   success: false;
+   statusCode: number;
+   message: string;
+   data: null;
+   error: IError;
+}

@@ -1,0 +1,10 @@
+2025-08-08 09:17:19 info: productModel.getProductDetail: productCode(PRD0001), : query(
+       SELECT product_code, product_name, product_image, product_price 
+       FROM sc_product.tbl_product_info
+       WHERE product_code = $1;
+    ) => params(["PRD0001"])
+2025-08-08 09:17:31 info: productModel.getProductDetail: productCode(PRD0001), : query(
+       SELECT product_code, product_name, product_image, product_price 
+       FROM sc_product.tbl_product_info
+       WHERE product_code = $1;
+    ) => params(["PRD0001"])

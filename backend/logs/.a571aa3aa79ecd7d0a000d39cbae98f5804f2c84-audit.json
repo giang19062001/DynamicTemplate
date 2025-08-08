@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "D:\\SHUKET\\DynamicTemplate\\backend\\logs\\.a571aa3aa79ecd7d0a000d39cbae98f5804f2c84-audit.json",
+    "files": [
+        {
+            "date": 1754619434801,
+            "name": "D:\\SHUKET\\DynamicTemplate\\backend\\logs\\error-2025-08-08-09.log",
+            "hash": "683d41c0fca444d0e30a4b0963bea06357e06edb9e7aa853059624376f539bbf"
+        },
+        {
+            "date": 1754625100027,
+            "name": "D:\\SHUKET\\DynamicTemplate\\backend\\logs\\error-2025-08-08-10.log",
+            "hash": "0786b71ce5576d45e40a28770f5ee1f0101f5fc24f13312202eff545ecc8f62c"
+        },
+        {
+            "date": 1754625925505,
+            "name": "D:\\SHUKET\\DynamicTemplate\\backend\\logs\\error-2025-08-08-11.log",
+            "hash": "b47f05d54d83f805f85b4a56e4afa858d9886802497ac5f767d91778056d5a40"
+        }
+    ],
+    "hashType": "sha256"
+}

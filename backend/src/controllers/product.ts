@@ -1,0 +1,62 @@
+import { IError, IPaging } from "../interface/common.js";
+import { Request, Response, NextFunction } from "express";
+import apiResponse from "../utils/response.js";
+import { msgError, msgSuccess } from "../utils/message.js";
+import productModel from "../models/product.js";
+import { FILTERS, LIMIT, OFFSET } from "../utils/const.js";
+import categoryModel from "../models/category.js";
+import templateModel from "../models/template.js";
+import { IProductListLayout } from "../interface/product.js";
+
+const productController = {
+   async getProductListLayout(req: Request, res: Response, next: NextFunction) {
+      try {
+         const templateResult = await templateModel.getLayoutTemplate();
+         const productResult = await productModel.getProductList(OFFSET, LIMIT);
+         const categoryResult = await categoryModel.getCategoryList();
+         const result: IProductListLayout = {
+            layouts: templateResult,
+            data: {
+               filters: FILTERS,
+               categories: categoryResult,
+               productTotal: productResult.total,
+               productList: productResult.list,
+            },
+         };
+
+         return apiResponse.success(res, result, msgSuccess.fetchSuccess, 200);
+      } catch (error: unknown) {
+         return apiResponse.error(res, error as IError, msgError.fetchErr, 200);
+      }
+   },
+
+   async getProductList(req: Request, res: Response, next: NextFunction) {
+      try {
+         const { offset = OFFSET, limit = LIMIT } = req.body as IPaging;
+         const productData = await productModel.getProductList(offset, limit);
+         const result = {
+            productTotal: productData.total,
+            productList: productData.list,
+         };
+         return apiResponse.success(res, result, msgSuccess.fetchSuccess, 200);
+      } catch (error: unknown) {
+         return apiResponse.error(res, error as IError, msgError.fetchErr, 200);
+      }
+   },
+
+   async getProductDetail(req: Request, res: Response, next: NextFunction) {
+      try {
+         const { productCode } = req.body;
+         const productData = await productModel.getProductDetail(productCode);
+         if (productData) {
+            return apiResponse.success(res, productData, msgSuccess.fetchSuccess, 200);
+         } else {
+            return apiResponse.error(res, null, msgError.fetchErr, 200);
+         }
+      } catch (error) {
+         return apiResponse.error(res, null, msgError.fetchErr, 200);
+      }
+   },
+};
+
+export default productController;
