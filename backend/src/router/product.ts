@@ -5,5 +5,6 @@ const router = express.Router();
 router.post("/getProductListLayout", productController.getProductListLayout);
 router.post("/getProductList", productController.getProductList);
 router.post("/getProductDetail", productController.getProductDetail);
+router.post("/syncProductFromPos", productController.syncProductFromPos);
 
 export default router;

@@ -6,7 +6,8 @@ import productModel from "../models/product.js";
 import { FILTERS, LIMIT, OFFSET } from "../utils/const.js";
 import categoryModel from "../models/category.js";
 import templateModel from "../models/template.js";
-import { IProductListLayout } from "../interface/product.js";
+import { IProduct, IProductListLayout } from "../interface/product.js";
+import funcService from "../service/func.js";
 
 const productController = {
    async getProductListLayout(req: Request, res: Response, next: NextFunction) {
@@ -54,6 +55,27 @@ const productController = {
          } else {
             return apiResponse.error(res, null, msgError.fetchErr, 200);
          }
+      } catch (error) {
+         return apiResponse.error(res, null, msgError.fetchErr, 200);
+      }
+   },
+   async syncProductFromPos(req: Request, res: Response, next: NextFunction) {
+      try {
+         const productsSync: IProduct[] = req.body;
+         // console.log("productsSync", productsSync);
+         let resultSync: Record<string, boolean> = {};
+         if (productsSync.length) {
+            for (const product of productsSync) {
+               const pro = funcService.toCamelCase(product); // product_code => productCode
+               const result = await productModel.updateProduct(pro);
+               if (result) {
+                  resultSync[`${product.productCode}`] = true;
+               } else {
+                  resultSync[`${product.productCode}`] = false;
+               }
+            }
+         }
+         return apiResponse.success(res, resultSync, msgSuccess.fetchSuccess, 200);
       } catch (error) {
          return apiResponse.error(res, null, msgError.fetchErr, 200);
       }

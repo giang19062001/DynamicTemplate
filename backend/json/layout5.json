@@ -57,6 +57,7 @@
                     "color": "#ff0000",
                     "borderColor": "#ff0000"
                   },
+                  "isMultiple": true,
                   "hightlightBy": "item.categoryCode"
                 }
               }
@@ -100,6 +101,7 @@
                     "color": "#ff0000",
                     "borderColor": "#ff0000"
                   },
+                  "isMultiple": false,
                   "hightlightBy": "item.filterCode"
                 }
               }
@@ -197,9 +199,10 @@
               "justifyContent": "space-between"
             },
             "contentContainerStyle": {
+              "paddingBottom": 10,
               "justifyContent": "space-between",
               "paddingVertical": 20,
-              "paddingHorizontal": 20
+              "paddingHorizontal": 16
             },
             "onEndReachedThreshold": 0.5
           }

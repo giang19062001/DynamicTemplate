@@ -25,7 +25,7 @@ const queryService = {
       }
    },
 
-   execQuery: async (query: string, params: any[], logBase: string): Promise<object | null> => {
+   execQueryOne: async (query: string, params: any[], logBase: string): Promise<object | null> => {
       try {
          const { rows } = await pool.query(query, params);
          logger.writeLog("info", `${logBase}: query(${query}) => params(${JSON.stringify(params)})`);
@@ -33,6 +33,17 @@ const queryService = {
       } catch (error: unknown) {
          logger.writeLog("error", `${logBase}: query(${query}) => params(${JSON.stringify(params)}) =>  error(${(error as IError).message})`);
          return null;
+      }
+   },
+   
+   execQuery: async (query: string, params: any[], logBase: string): Promise<boolean> => {
+      try {
+         await pool.query(query, params);
+         logger.writeLog("info", `${logBase}: query(${query}) => params(${JSON.stringify(params)})`);
+         return true
+      } catch (error: unknown) {
+         logger.writeLog("error", `${logBase}: query(${query}) => params(${JSON.stringify(params)}) =>  error(${(error as IError).message})`);
+         return false;
       }
    },
 };

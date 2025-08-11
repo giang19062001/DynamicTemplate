@@ -1,3 +1,0 @@
-2025-08-08 11:19:34 error: categoryModel.getCategoryList: : query(
-      SELECT category_code, category_name FROM  sc_category.tbl_category_info
-    ) => params([]) =>  error(column "category_name" does not exist)

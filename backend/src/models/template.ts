@@ -8,7 +8,7 @@ const templateModel = {
    async getLayoutTemplate(): Promise<ITemplate> {
       const logBase = funcService.generateLogBase("categoryModel", "getCategoryList", {});
       try {
-         const result = await queryService.execQuery(templateQueries.getLayoutTemplate, [], logBase);
+         const result = await queryService.execQueryOne(templateQueries.getLayoutTemplate, [], logBase);
          if (result) {
             // .layouts
             return Object.values(result)[0];

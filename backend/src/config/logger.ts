@@ -43,7 +43,7 @@ const logger: CustomLogger = winston.createLogger({
          level: "info",
          format: combine(infoOnly(), logFormat),
          filename: path.join(logsPath, "info-%DATE%.log"),
-         datePattern: "YYYY-MM-DD-HH",
+         datePattern: "YYYY-MM-DD",
          maxSize: "1m", // tương đương ~1024 bytes
          maxFiles: "30d",
          zippedArchive: true,
@@ -52,7 +52,7 @@ const logger: CustomLogger = winston.createLogger({
          level: "error",
          format: combine(errorOnly(), logFormat),
          filename: path.join(logsPath, "error-%DATE%.log"),
-         datePattern: "YYYY-MM-DD-HH",
+         datePattern: "YYYY-MM-DD",
          maxSize: "1m",
          maxFiles: "30d",
          zippedArchive: true,
