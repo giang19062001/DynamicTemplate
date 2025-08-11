@@ -1,0 +1,152 @@
+{
+   "layouts": {
+      "type": "ScrollView",
+      "style": {
+         "height": 650
+      },
+      "children": [
+         {
+            "type": "View",
+            "style": {
+               "paddingBottom": 40
+            },
+            "children": [
+               {
+                  "type": "FastImage",
+                  "source": {
+                     "uri": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fplay-lh.googleusercontent.com%2FKsqqVjR7kJ_mkf1g8bk1D5ajwVnnUSFbRcNq_1oMi2vZVnHH6dC3y6XP9Bo3oBtSoms%3Dh500&type=sc960_832"
+                  },
+                  "style": {
+                     "width": "95%",
+                     "height": 150,
+                     "marginHorizontal": 10,
+                     "backgroundColor": "rgba(255, 255, 255, 0.9)"
+                  }
+               },
+               {
+                  "type": "MapView",
+                  "dataKey": "categories",
+                  "style": {
+                     "marginTop": 10,
+                     "flexDirection": "row",
+                     "flexWrap": "wrap"
+                  },
+                  "children": [
+                     {
+                        "type": "DynamicColorText",
+                        "text": "item.categoryName",
+                        "onPress": {
+                           "action": "selectCategory",
+                           "params": {
+                              "categoryName": "item.categoryName"
+                           }
+                        },
+                        "style": {
+                           "fontSize": 18,
+                           "fontWeight": "600",
+                           "marginLeft": 5,
+                           "color": "#d3d3d3",
+                           "paddingHorizontal": 15,
+                           "paddingVertical": 5,
+                           "borderWidth": 2,
+                           "borderColor": "grey",
+                           "borderRadius": 20,
+                           "marginBottom": 5
+                        }
+                     }
+                  ]
+               },
+               {
+                  "type": "FlatList",
+                  "dataKey": "productList",
+                  "numColumns": 3,
+                  "onEndReached": "handleLoadMore",
+                  "onEndReachedThreshold": 0.5,
+                  "renderItem": {
+                     "type": "TouchableOpacity",
+                     "onPress": {
+                        "action": "navigateToDetail",
+                        "params": {
+                           "id": "item.productId"
+                        }
+                     },
+                     "style": {
+                        "width": "31%",
+                        "borderRadius": 10,
+                        "backgroundColor": "rgb(255, 255, 255)",
+                        "alignItems": "center",
+                        "margin": 5
+                     },
+                     "children": [
+                        {
+                           "type": "View",
+                           "style": {
+                              "flex": 1,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "borderRadius": 10,
+                              "overflow": "hidden",
+                              "padding": 5
+                           },
+                           "children": [
+                              {
+                                 "type": "FastImage",
+                                 "source": {
+                                    "uri": "item.productImage"
+                                 },
+                                 "style": {
+                                    "width": 100,
+                                    "height": 100,
+                                    "backgroundColor": "rgba(255, 255, 255, 0.9)"
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "type": "View",
+                           "style": {
+                              "flex": 1,
+                              "justifyContent": "center",
+                              "alignItems": "flex-start"
+                           },
+                           "children": [
+                              {
+                                 "type": "Text",
+                                 "text": "item.productName",
+                                 "style": {
+                                    "fontSize": 18,
+                                    "fontWeight": "400",
+                                    "color": "rgba(117, 117, 117, 0.4)",
+                                    "textAlign": "left"
+                                 }
+                              },
+                              {
+                                 "type": "Text",
+                                 "text": "item.productPrice",
+                                 "style": {
+                                    "fontSize": 16,
+                                    "fontWeight": "900",
+                                    "color": "rgba(0, 0, 0, 0.7)",
+                                    "textAlign": "left",
+                                    "marginVertical": 5
+                                 }
+                              }
+                           ]
+                        }
+                     ]
+                  },
+                  "contentContainerStyle": {
+                     "paddingHorizontal": 16,
+                     "justifyContent": "space-between",
+                     "paddingVertical": 20
+                  },
+                  "columnWrapperStyle": {
+                     "justifyContent": "space-between",
+                     "marginBottom": 10
+                  }
+               }
+            ]
+         }
+      ]
+   }
+}

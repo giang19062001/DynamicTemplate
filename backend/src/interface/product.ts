@@ -1,5 +1,5 @@
 import { ICate } from "./category.js";
-import { IFilters } from "./common.js";
+import { IFilter } from "./common.js";
 import { ITemplate } from "./template.js";
 
 export interface IProduct {
@@ -12,7 +12,7 @@ export interface IProduct {
 export interface IProductListLayout {
    layouts: ITemplate;
    data: {
-      filters: IFilters[];
+      filters: IFilter[];
       categories: ICate[];
       productTotal: number;
       productList: IProduct[];

@@ -1,6 +1,6 @@
 export const OFFSET = 0;
 export const LIMIT = 10;
-export const DEFAULT_LAYOUT = { type: "", style: null, childrean: [] };
+export const DEFAULT_LAYOUT = { type: "", style: null, children: [] };
 export const FILTERS = [
    {
       filterName: "All",

@@ -1,0 +1,210 @@
+{
+  "layouts": {
+    "type": "ScrollView",
+    "style": {
+      "paddingBottom": 200
+    },
+    "children": [
+      {
+        "type": "View",
+        "style": null,
+        "children": [
+          {
+            "type": "FastImage",
+            "style": {
+              "width": "95%",
+              "height": 200,
+              "backgroundColor": "rgba(255, 255, 255, 0.9)",
+              "marginHorizontal": 10
+            },
+            "source": {
+              "uri": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fplay-lh.googleusercontent.com%2FKsqqVjR7kJ_mkf1g8bk1D5ajwVnnUSFbRcNq_1oMi2vZVnHH6dC3y6XP9Bo3oBtSoms%3Dh500&type=sc960_832"
+            },
+            "resizeMode": "stretch"
+          },
+          {
+            "type": "MapView",
+            "style": {
+              "flexWrap": "wrap",
+              "marginTop": 10,
+              "flexDirection": "row"
+            },
+            "dataKey": "categories",
+            "children": [
+              {
+                "text": "item.categoryName",
+                "type": "ActiveText",
+                "style": {
+                  "color": "#d3d3d3",
+                  "fontSize": 18,
+                  "fontWeight": 600,
+                  "marginLeft": 5,
+                  "borderColor": "#d3d3d3",
+                  "borderWidth": 2,
+                  "borderRadius": 20,
+                  "marginBottom": 5,
+                  "paddingVertical": 5,
+                  "paddingHorizontal": 15
+                },
+                "onPress": {
+                  "action": "selectCategory",
+                  "params": {
+                    "id": "item.categoryCode"
+                  }
+                },
+                "hightlight": {
+                  "style": {
+                    "color": "#ff0000",
+                    "borderColor": "#ff0000"
+                  },
+                  "hightlightBy": "item.categoryCode"
+                }
+              }
+            ]
+          },
+          {
+            "type": "MapView",
+            "style": {
+              "flexWrap": "wrap",
+              "marginTop": 10,
+              "alignItems": "center",
+              "marginRight": 10,
+              "flexDirection": "row",
+              "justifyContent": "flex-end"
+            },
+            "dataKey": "filters",
+            "children": [
+              {
+                "text": "item.filterName",
+                "type": "ActiveText",
+                "style": {
+                  "color": "#d3d3d3",
+                  "fontSize": 18,
+                  "fontWeight": 600,
+                  "marginLeft": 5,
+                  "borderColor": "#d3d3d3",
+                  "borderWidth": 2,
+                  "borderRadius": 20,
+                  "marginBottom": 5,
+                  "paddingVertical": 5,
+                  "paddingHorizontal": 15
+                },
+                "onPress": {
+                  "action": "selectFilter",
+                  "params": {
+                    "id": "item.filterCode"
+                  }
+                },
+                "hightlight": {
+                  "style": {
+                    "color": "#ff0000",
+                    "borderColor": "#ff0000"
+                  },
+                  "hightlightBy": "item.filterCode"
+                }
+              }
+            ]
+          },
+          {
+            "type": "FlatList",
+            "dataKey": "productList",
+            "numColumns": 2,
+            "renderItem": {
+              "type": "TouchableOpacity",
+              "style": {
+                "width": "47%",
+                "elevation": 10,
+                "alignItems": "center",
+                "shadowColor": "rgb(31, 41, 55)",
+                "borderRadius": 10,
+                "shadowOffset": {
+                  "width": 0,
+                  "height": 1
+                },
+                "shadowRadius": 10,
+                "shadowOpacity": 0.9,
+                "backgroundColor": "rgb(255, 255, 255)"
+              },
+              "onPress": {
+                "action": "navigateToDetail",
+                "params": {
+                  "id": "item.productCode"
+                }
+              },
+              "children": [
+                {
+                  "type": "View",
+                  "style": {
+                    "width": "100%",
+                    "height": 100,
+                    "overflow": "hidden",
+                    "alignItems": "center",
+                    "borderRadius": 10,
+                    "justifyContent": "center"
+                  },
+                  "children": [
+                    {
+                      "type": "FastImage",
+                      "style": {
+                        "width": 100,
+                        "height": 100,
+                        "backgroundColor": "rgba(255, 255, 255, 0.9)"
+                      },
+                      "source": {
+                        "uri": "item.productImage"
+                      },
+                      "resizeMode": "contain"
+                    }
+                  ]
+                },
+                {
+                  "type": "View",
+                  "style": {
+                    "flex": 1,
+                    "alignItems": "center",
+                    "justifyContent": "center"
+                  },
+                  "children": [
+                    {
+                      "text": "item.productName",
+                      "type": "Text",
+                      "style": {
+                        "color": "rgba(0, 0, 0, 0.7)",
+                        "fontSize": 18,
+                        "textAlign": "center",
+                        "fontWeight": "700",
+                        "marginVertical": 10
+                      }
+                    },
+                    {
+                      "text": "item.productPrice",
+                      "type": "Text",
+                      "style": {
+                        "color": "#00C853",
+                        "fontSize": 16,
+                        "textAlign": "center",
+                        "fontWeight": "700",
+                        "marginVertical": 10
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "onEndReached": "onLoadMore",
+            "columnWrapperStyle": {
+              "marginBottom": 10,
+              "justifyContent": "space-between"
+            },
+            "contentContainerStyle": {
+              "justifyContent": "space-between",
+              "paddingVertical": 20,
+              "paddingHorizontal": 20
+            },
+            "onEndReachedThreshold": 0.5
+          }
+        ]
+      }
+    ]
+  }
+}

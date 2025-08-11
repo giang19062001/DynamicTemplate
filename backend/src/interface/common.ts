@@ -3,12 +3,16 @@ export interface IPaging {
    limit?: number;
 }
 
+export interface ICount {
+   cnt?: string; // number
+}
+
 export interface IModelList {
    total: number;
    list: any[];
 }
 
-export interface IFilters {
+export interface IFilter {
    filterName: string;
    filterCode: string;
 }

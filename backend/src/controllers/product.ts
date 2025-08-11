@@ -14,6 +14,7 @@ const productController = {
          const templateResult = await templateModel.getLayoutTemplate();
          const productResult = await productModel.getProductList(OFFSET, LIMIT);
          const categoryResult = await categoryModel.getCategoryList();
+         console.log("templateResult => ", JSON.stringify(templateResult, null, 2));
          const result: IProductListLayout = {
             layouts: templateResult,
             data: {
